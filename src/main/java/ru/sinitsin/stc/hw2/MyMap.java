@@ -1,4 +1,4 @@
-package task21;
+package ru.sinitsin.stc.hw2;
 
 public class MyMap {
     private static final int SIZE = 16;
@@ -14,11 +14,11 @@ public class MyMap {
 
         while (e != null) {
             if (e.key.equals(k)) {
-                return e;
+                return e.getValue();
             }
             e = e.next;
         }
-        return "Объект не существует";
+        return null;
     }
 
      boolean remove(Object k) {
@@ -51,7 +51,7 @@ public class MyMap {
 
      void add(Object k, Object v) {
         if (k == null)
-            return;
+            throw new NullPointerException("Null нельзя хранить");
         int column = k.hashCode() % SIZE;
         Entry e = table[column];
 
@@ -108,23 +108,23 @@ public class MyMap {
     }
 
     public static void main (String[]args){
-        MyMap myHashMap = new MyMap();
+            MyMap myHashMap = new MyMap();
 
-        myHashMap.add("Audi", "Germany");
-        myHashMap.add("Land-Rover", "England");
-        myHashMap.add("Lada", "Russia");
-        myHashMap.add("Fiat", "Italy");
-        myHashMap.add("Ford", "USA");
+            myHashMap.add("Audi", "Germany");
+            myHashMap.add("Land-Rover", "England");
+            myHashMap.add("Lada", "Russia");
+            myHashMap.add("Fiat", "Italy");
+            myHashMap.add("Ford", "USA");
 
-        System.out.println("" + myHashMap.get("Lada"));
-        myHashMap.remove("Lada");
-        System.out.println("" + myHashMap.get("Lada"));
+            System.out.println("" + myHashMap.get("Lada"));
+            myHashMap.remove("Lada");
+            System.out.println("" + myHashMap.get("Lada"));
 
 
-        System.out.println(myHashMap.getCount());
-        myHashMap.update("Land-Rover", "Cyprus");
-        System.out.println("" + myHashMap.get("Land-Rover"));
-        System.out.println(myHashMap.checking("Ford"));
+            System.out.println(myHashMap.getCount());
+            myHashMap.update("Land-Rover", "Cyprus");
+            System.out.println("" + myHashMap.get("Land-Rover"));
+            System.out.println(myHashMap.checking("Ford"));
 
 
     }

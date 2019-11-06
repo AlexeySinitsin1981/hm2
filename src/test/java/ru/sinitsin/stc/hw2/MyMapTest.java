@@ -1,4 +1,4 @@
-package task21;
+package ru.sinitsin.stc.hw2;
 
 import org.junit.Test;
 
